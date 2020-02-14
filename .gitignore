@@ -2,7 +2,10 @@
 build/
 syn/*
 pr/*
+P76061386.docx
+StudentID
 *.fsdb
+*.rc
 
 # temporary
 *.swp
