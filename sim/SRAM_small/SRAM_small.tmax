@@ -1,0 +1,162 @@
+///////////////////////////////////////////////////////////////////////////////////
+// 
+//              Synchronous High Speed Single Port SRAM Compiler 
+// 
+//                    UMC 0.18um GenericII Logic Process
+//    __________________________________________________________________________
+// 
+// 
+//        (C) Copyright 2002-2009 Faraday Technology Corp. All Rights Reserved.
+// 
+//      This source code is an unpublished work belongs to Faraday Technology
+//      Corp.  It is considered a trade secret and is not to be divulged or
+//      used by parties who have not received written authorization from
+//      Faraday Technology Corp.
+// 
+//      Faraday's home page can be found at:
+//      http://www.faraday-tech.com/
+//     
+// ________________________________________________________________________________
+// 
+//       Module Name       :  SRAM_small  
+//       Word              :  512         
+//       Bit               :  8           
+//       Byte              :  4           
+//       Mux               :  1           
+//       Power Ring Type   :  port        
+//       Power Ring Width  :  2 (um)      
+//       Output Loading    :  0.01 (pf)   
+//       Input Data Slew   :  0.02 (ns)   
+//       Input Clock Slew  :  0.02 (ns)   
+// 
+// ________________________________________________________________________________
+// 
+//       Library          : FSA0M_A
+//       Memaker          : 200901.2.1
+//       Date             : 2019/01/14 16:00:44
+// 
+// ________________________________________________________________________________
+// 
+//
+//       Library          : FSA0M_A
+//       Memaker          : 200901.2.1
+//       Date             : 2019/01/14 16:00:50
+//
+///////////////////////////////////////////////////////////////////////////////////
+
+module SRAM_small ( 
+                     A8,A7,A6,A5,A4,A3,A2,A1,A0, 
+                     DO0, DO1, DO2, DO3, DO4, DO5, DO6, DO7, DO8, DO9, DO10, DO11, DO12, DO13, DO14, DO15, DO16, DO17, DO18, DO19, DO20, DO21, DO22, DO23, DO24, DO25, DO26, DO27, DO28, DO29, DO30, DO31,
+                     DI0, DI1, DI2, DI3, DI4, DI5, DI6, DI7, DI8, DI9, DI10, DI11, DI12, DI13, DI14, DI15, DI16, DI17, DI18, DI19, DI20, DI21, DI22, DI23, DI24, DI25, DI26, DI27, DI28, DI29, DI30, DI31,
+                     WEB3,WEB2,WEB1,WEB0,CK,CS,OE);
+                           
+   parameter  AddressSize     = 9;
+   parameter  Bits            = 8;
+   parameter  Words           = 512;
+   parameter  Bytes           = 4;
+   parameter  AddressRepSize  = 8;
+   parameter  DVSize          = 0; 
+ 
+   input  CK, CS, OE;
+   input  WEB3,WEB2,WEB1,WEB0;
+   input  A8,A7,A6,A5,A4,A3,A2,A1,A0;
+   input  DI0,DI1,DI2,DI3,DI4,DI5,DI6,DI7,DI8,DI9,DI10,DI11,DI12,DI13,DI14,DI15,DI16,DI17,DI18,DI19,DI20,DI21,DI22,DI23,DI24,DI25,DI26,DI27,DI28,DI29,DI30,DI31; 
+   output DO0,DO1,DO2,DO3,DO4,DO5,DO6,DO7,DO8,DO9,DO10,DO11,DO12,DO13,DO14,DO15,DO16,DO17,DO18,DO19,DO20,DO21,DO22,DO23,DO24,DO25,DO26,DO27,DO28,DO29,DO30,DO31;
+
+   reg [Bits-1:0] mem_0 [0:Words-1] ; 
+   reg [Bits-1:0] mem_1 [0:Words-1] ; 
+   reg [Bits-1:0] mem_2 [0:Words-1] ; 
+   reg [Bits-1:0] mem_3 [0:Words-1] ; 
+   reg [Bits-1:0] DO_0 ;   
+   reg [Bits-1:0] DO_1 ;   
+   reg [Bits-1:0] DO_2 ;   
+   reg [Bits-1:0] DO_3 ;   
+  
+   wire [AddressSize-1:0] A = { A8,A7,A6,A5,A4,A3,A2,A1,A0 }; 
+   wire [Bits-1:0] DI_0 = { DI7,DI6,DI5,DI4,DI3,DI2,DI1,DI0 };         
+   wire [Bits-1:0] DI_1 = { DI15,DI14,DI13,DI12,DI11,DI10,DI9,DI8 };         
+   wire [Bits-1:0] DI_2 = { DI23,DI22,DI21,DI20,DI19,DI18,DI17,DI16 };         
+   wire [Bits-1:0] DI_3 = { DI31,DI30,DI29,DI28,DI27,DI26,DI25,DI24 };         
+   wire [Bytes-1:0] WEB = { WEB3,WEB2,WEB1,WEB0 }; 
+   wire [Bytes*Bits-1:0] DO = { DO_3,DO_2,DO_1,DO_0 };     
+   wire DO31 = DO[31] ;     
+   wire DO30 = DO[30] ;     
+   wire DO29 = DO[29] ;     
+   wire DO28 = DO[28] ;     
+   wire DO27 = DO[27] ;     
+   wire DO26 = DO[26] ;     
+   wire DO25 = DO[25] ;     
+   wire DO24 = DO[24] ;     
+   wire DO23 = DO[23] ;     
+   wire DO22 = DO[22] ;     
+   wire DO21 = DO[21] ;     
+   wire DO20 = DO[20] ;     
+   wire DO19 = DO[19] ;     
+   wire DO18 = DO[18] ;     
+   wire DO17 = DO[17] ;     
+   wire DO16 = DO[16] ;     
+   wire DO15 = DO[15] ;     
+   wire DO14 = DO[14] ;     
+   wire DO13 = DO[13] ;     
+   wire DO12 = DO[12] ;     
+   wire DO11 = DO[11] ;     
+   wire DO10 = DO[10] ;     
+   wire DO9 = DO[9] ;     
+   wire DO8 = DO[8] ;     
+   wire DO7 = DO[7] ;     
+   wire DO6 = DO[6] ;     
+   wire DO5 = DO[5] ;     
+   wire DO4 = DO[4] ;     
+   wire DO3 = DO[3] ;     
+   wire DO2 = DO[2] ;     
+   wire DO1 = DO[1] ;     
+   wire DO0 = DO[0] ;     
+
+   reg [Bits-1:0] data_reg_0 ;   
+   reg [Bits-1:0] data_reg_1 ;   
+   reg [Bits-1:0] data_reg_2 ;   
+   reg [Bits-1:0] data_reg_3 ;   
+
+   wire write_en0;
+   wire write_en1;
+   wire write_en2;
+   wire write_en3;
+
+
+   and u10 (write_en0, !WEB[0], CS); 
+   and u11 (write_en1, !WEB[1], CS); 
+   and u12 (write_en2, !WEB[2], CS); 
+   and u13 (write_en3, !WEB[3], CS); 
+
+   always @ (posedge CK) 
+      if (write_en0) mem_0[A] = DI_0;      
+   always @ (posedge CK) 
+      if (write_en1) mem_1[A] = DI_1;      
+   always @ (posedge CK) 
+      if (write_en2) mem_2[A] = DI_2;      
+   always @ (posedge CK) 
+      if (write_en3) mem_3[A] = DI_3;      
+
+   always @ (posedge CK) 
+      if (CS) data_reg_0 = mem_0[A];      
+   always @ (posedge CK) 
+      if (CS) data_reg_1 = mem_1[A];      
+   always @ (posedge CK) 
+      if (CS) data_reg_2 = mem_2[A];      
+   always @ (posedge CK) 
+      if (CS) data_reg_3 = mem_3[A];      
+
+   always @ (OE or data_reg_0)  
+     if (OE) DO_0 = data_reg_0;
+      else    DO_0 = 8'hZ;   
+   always @ (OE or data_reg_1)  
+     if (OE) DO_1 = data_reg_1;
+      else    DO_1 = 8'hZ;   
+   always @ (OE or data_reg_2)  
+     if (OE) DO_2 = data_reg_2;
+      else    DO_2 = 8'hZ;   
+   always @ (OE or data_reg_3)  
+     if (OE) DO_3 = data_reg_3;
+      else    DO_3 = 8'hZ;   
+                             
+endmodule

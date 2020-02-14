@@ -1,0 +1,93 @@
+///////////////////////////////////////////////////////////////////////////////////
+// 
+//              Synchronous High Speed Single Port SRAM Compiler 
+// 
+//                    UMC 0.18um GenericII Logic Process
+//    __________________________________________________________________________
+// 
+// 
+//        (C) Copyright 2002-2009 Faraday Technology Corp. All Rights Reserved.
+// 
+//      This source code is an unpublished work belongs to Faraday Technology
+//      Corp.  It is considered a trade secret and is not to be divulged or
+//      used by parties who have not received written authorization from
+//      Faraday Technology Corp.
+// 
+//      Faraday's home page can be found at:
+//      http://www.faraday-tech.com/
+//     
+// ________________________________________________________________________________
+// 
+//       Module Name       :  SRAM_small  
+//       Word              :  512         
+//       Bit               :  8           
+//       Byte              :  4           
+//       Mux               :  1           
+//       Power Ring Type   :  port        
+//       Power Ring Width  :  2 (um)      
+//       Output Loading    :  0.01 (pf)   
+//       Input Data Slew   :  0.02 (ns)   
+//       Input Clock Slew  :  0.02 (ns)   
+// 
+// ________________________________________________________________________________
+// 
+//       Library          : FSA0M_A
+//       Memaker          : 200901.2.1
+//       Date             : 2019/01/14 16:00:44
+// 
+// ________________________________________________________________________________
+// 
+//       Library          : FSA0M_A
+//       Memaker          : 200901.2.1
+//       Date             : 2019/01/14 16:00:50
+//
+///////////////////////////////////////////////////////////////////////////////////
+
+model SRAM_small (
+    A0, A1, A2, A3, A4, A5, A6, A7, A8,
+    DI0, DI1, DI2, DI3, DI4, DI5, DI6, DI7, DI8, DI9, DI10, DI11, DI12, DI13, DI14, DI15, DI16, DI17, DI18, DI19, DI20, DI21, DI22, DI23, DI24, DI25, DI26, DI27, DI28, DI29, DI30, DI31,
+    DO0, DO1, DO2, DO3, DO4, DO5, DO6, DO7, DO8, DO9, DO10, DO11, DO12, DO13, DO14, DO15, DO16, DO17, DO18, DO19, DO20, DO21, DO22, DO23, DO24, DO25, DO26, DO27, DO28, DO29, DO30, DO31,
+    WEB0, WEB1, WEB2, WEB3,
+    CK, CS, OE) (
+
+    input (WEB0, WEB1, WEB2, WEB3, CK, CS, OE) ()
+    input (A0, A1, A2, A3, A4, A5, A6, A7, A8) ()
+    input (DI0, DI1, DI2, DI3, DI4, DI5, DI6, DI7, DI8, DI9, DI10, DI11, DI12, DI13, DI14, DI15, DI16, DI17, DI18, DI19, DI20, DI21, DI22, DI23, DI24, DI25, DI26, DI27, DI28, DI29, DI30, DI31) ()
+    intern(WE0)(primitive = _inv (WEB0, WE0);)
+    intern(WE0CS)(primitive = _and (WE0,CS,WE0CS);)
+    intern(WE1)(primitive = _inv (WEB1, WE1);)
+    intern(WE1CS)(primitive = _and (WE1,CS,WE1CS);)
+    intern(WE2)(primitive = _inv (WEB2, WE2);)
+    intern(WE2CS)(primitive = _and (WE2,CS,WE2CS);)
+    intern(WE3)(primitive = _inv (WEB3, WE3);)
+    intern(WE3CS)(primitive = _and (WE3,CS,WE3CS);)
+    intern(WE)(primitive = _and (WE0, WE1, WE2, WE3, WE);)
+    intern(WEB)(primitive = _inv (WE, WEB);)
+    intern(WEN)(primitive = _and (WE,CS,WEN);)
+    intern(REN)(primitive = _and (WEB,CS,REN);)
+
+    output (DO0, DO1, DO2, DO3, DO4, DO5, DO6, DO7, DO8, DO9, DO10, DO11, DO12, DO13, DO14, DO15, DO16, DO17, DO18, DO19, DO20, DO21, DO22, DO23, DO24, DO25, DO26, DO27, DO28, DO29, DO30, DO31) (
+        data_size = 8;
+        address_size = 9;
+        min_address = 0;
+        max_address = 511;
+        edge_trigger = WR;
+        read_write_conflict = XX;
+        primitive = _cram(, ,
+            _write{H,H,H} (CK, WE0CS, A0, A1, A2, A3, A4, A5, A6, A7, A8, DI0, DI1, DI2, DI3, DI4, DI5, DI6, DI7),
+            _read{Z,H,H,H} (OE, CK, REN, A0, A1, A2, A3, A4, A5, A6, A7, A8, DO0, DO1, DO2, DO3, DO4, DO5, DO6, DO7)
+        );
+        primitive = _cram(, ,
+            _write{H,H,H} (CK, WE1CS, A0, A1, A2, A3, A4, A5, A6, A7, A8, DI8, DI9, DI10, DI11, DI12, DI13, DI14, DI15),
+            _read{Z,H,H,H} (OE, CK, REN, A0, A1, A2, A3, A4, A5, A6, A7, A8, DO8, DO9, DO10, DO11, DO12, DO13, DO14, DO15)
+        );
+        primitive = _cram(, ,
+            _write{H,H,H} (CK, WE2CS, A0, A1, A2, A3, A4, A5, A6, A7, A8, DI16, DI17, DI18, DI19, DI20, DI21, DI22, DI23),
+            _read{Z,H,H,H} (OE, CK, REN, A0, A1, A2, A3, A4, A5, A6, A7, A8, DO16, DO17, DO18, DO19, DO20, DO21, DO22, DO23)
+        );
+        primitive = _cram(, ,
+            _write{H,H,H} (CK, WE3CS, A0, A1, A2, A3, A4, A5, A6, A7, A8, DI24, DI25, DI26, DI27, DI28, DI29, DI30, DI31),
+            _read{Z,H,H,H} (OE, CK, REN, A0, A1, A2, A3, A4, A5, A6, A7, A8, DO24, DO25, DO26, DO27, DO28, DO29, DO30, DO31)
+        );
+    )
+)

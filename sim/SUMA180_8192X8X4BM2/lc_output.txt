@@ -1,0 +1,19 @@
+
+Initializing...
+lc_shell> read_lib SUMA180_8192X8X4BM2_BC.lib
+Reading '/home/yutongshen/VLSI/Project/P76061386_without/sim/SUMA180_8192X8X4BM2/SUMA180_8192X8X4BM2_BC.lib' ...
+Warning: Line 45, The default_operating_conditions is not defined. operating_conditions 'BCCOM' is set
+        as the default_operating_conditions. (LBDB-663)
+Warning: Line 45, The 'internal_power_calculation' attribute in char_config group is required for NLPM library. 
+        No default can be applied to this attribute. (LBDB-366)
+Technology library 'SUMA180_8192X8X4BM2_BC' read successfully
+1
+lc_shell> write_lib SUMA180_8192X8X4BM2_BC -output SUMA180_8192X8X4BM2_BC.db
+Wrote the 'SUMA180_8192X8X4BM2_BC' library to '/home/yutongshen/VLSI/Project/P76061386_without/sim/SUMA180_8192X8X4BM2/SUMA180_8192X8X4BM2_BC.db' successfully
+1
+lc_shell> exit
+Maximum memory usage for this session: 64.65 MB
+CPU usage for this session:      3 seconds (  0.00 hours)
+Elapsed time for this session:     29 seconds (  0.01 hours)
+Thank you for using Library Compiler.
+

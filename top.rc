@@ -1,0 +1,160 @@
+Magic 271485
+Revision Verdi_O-2018.09
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 182 353 1455 658 247 129
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/yutongshen/VLSI/Projrct/N260XXXXX_Final/build/top.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 73774881.462144 73917372.409727
+cursor 73875500.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 25
+; marker line index
+markerPos 72
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/yutongshen/VLSI/Projrct/N260XXXXX_Final/build/top.fsdb"
+addSignal -h 15 /top_tb/TOP/i_CPU/i_CPU/clk
+addSignal -h 15 -holdScope rst
+addSignal -h 15 -holdScope ID_IntReq
+addSignal -h 15 -holdScope r_IF_ID_pc[31:0]
+addSignal -h 15 -holdScope r_IF_ID_Instr[31:0]
+addSignal -h 15 -UNSIGNED -BIN -holdScope ID_opcode[6:0]
+addSignal -h 15 -holdScope ID_funct3[2:0]
+addSignal -h 15 -holdScope ID_funct7[6:0]
+addSignal -h 15 -holdScope ID_rs1_addr[4:0]
+addSignal -h 15 -holdScope ID_rs2_addr[4:0]
+addSignal -h 15 -holdScope ID_rd_addr[4:0]
+addSignal -h 15 -holdScope ID_imm_out[31:0]
+addSignal -h 15 -UNSIGNED -HEX /top_tb/TOP/i_CPU/i_CPU/i_RF/regs[0:31]
+addSignal -h 15 /top_tb/TOP/i_CPU/i_CPU/DataReq
+addSignal -h 15 -holdScope DataAddr[31:0]
+addSignal -h 15 -holdScope DataType[2:0]
+addSignal -h 15 -holdScope DataWEN
+addSignal -h 15 -holdScope DataWait
+addGroup "G2"
+addSignal -h 15 /top_tb/TOP/i_DMA/Int
+addSignal -h 15 -holdScope HMASTER[3:0]
+addSignal -h 15 -holdScope HSEL_S
+addSignal -h 15 -UNSIGNED -HEX -holdScope HADDR[31:0]
+addSignal -h 15 -holdScope HRDATA[31:0]
+addSignal -h 15 -holdScope HWDATA[31:0]
+addSignal -h 15 -holdScope HWRITE
+addSignal -h 15 -UNSIGNED -HEX -holdScope ConfigReg[0:15]
+addSignal -h 15 -holdScope state[2:0]
+addGroup "G3" -e FALSE
+addSignal -h 15 /top_tb/TOP/i_CPU/DMEMAddr[31:0]
+addSignal -h 15 -holdScope DMEMIn[31:0]
+addSignal -h 15 -holdScope DMEMOut[31:0]
+addSignal -h 15 -holdScope DMEMReq
+addSignal -h 15 -holdScope DMEMType[2:0]
+addSignal -h 15 -holdScope DMEMWEN
+addSignal -h 15 -holdScope DMEMWait
+addGroup "G4" -e FALSE
+addSignal -h 15 /top_tb/TOP/i_CPU/L1CD/core_addr[31:0]
+addSignal -h 15 -holdScope core_in[31:0]
+addSignal -h 15 -holdScope core_out[31:0]
+addSignal -h 15 -holdScope core_req
+addSignal -h 15 -holdScope core_type[2:0]
+addSignal -h 15 -holdScope core_wait
+addSignal -h 15 -holdScope core_wait_viol
+addSignal -h 15 -holdScope core_write
+addSignal -h 15 -holdScope state[2:0]
+addGroup "G5" -e FALSE
+addSignal -h 15 /top_tb/TOP/i_DRAM/HSEL_S
+addSignal -h 15 -holdScope HTRANS[1:0]
+addSignal -h 15 -holdScope HWRITE
+addSignal -h 15 -holdScope DRAM_A[10:0]
+addSignal -h 15 -holdScope DRAM_CSn
+addSignal -h 15 -holdScope DRAM_RASn
+addSignal -h 15 -holdScope DRAM_CASn
+addSignal -h 15 -holdScope DRAM_D[31:0]
+addSignal -h 15 -holdScope DRAM_Q[31:0]
+addSignal -h 15 -holdScope DRAM_WEn[3:0]
+addGroup "G6"
+addSignal -h 15 /top_tb/TOP/i_Conv/HSEL_S
+addSignal -h 15 -UNSIGNED -HEX -holdScope HTRANS[1:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope HADDR[31:0]
+addSignal -h 15 -holdScope HWDATA[31:0]
+addSignal -h 15 -holdScope HREADY_S
+addSignal -h 15 -holdScope CREQ
+addSignal -h 15 -holdScope BUSY
+addSignal -h 15 -UNSIGNED -HEX -holdScope ConfigReg[0:15]
+addSignal -h 15 -holdScope A[16:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope WEB0[3:0]
+addSignal -h 15 -holdScope WEB1[3:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope DI[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope DO0[31:0]
+addSignal -h 15 -holdScope DO1[31:0]
+addSignal -h 15 -holdScope OE
+addSignal -h 15 -holdScope CS
+addGroup "G7"
+addGroup "G8"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+activeDirFile "" "/home/yutongshen/VLSI/Projrct/N260XXXXX_Final/build/top.fsdb"
+
+GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
+getSignalForm close
+
+"/top_tb"
+"/top_tb/TOP"
+"/top_tb/TOP/i_CPU"
+"/top_tb/TOP/i_CPU/L1CD"
+"/top_tb/TOP/i_Conv"
+"/top_tb/TOP/i_DMA"
+"/top_tb/TOP/i_DRAM"
+
+SCOPE_LIST_BEGIN
+"/top_tb"
+"/top_tb/TOP/i_CPU/i_CPU"
+"/top_tb/TOP/i_DMA"
+"/top_tb/TOP"
+"/top_tb/TOP/i_CPU"
+"/top_tb/TOP/i_CPU/i_CPU/i_CSR"
+"/top_tb/TOP/i_CPU/i_CPU/i_RF"
+"/top_tb/TOP/i_DRAM"
+"/top_tb/TOP/i_ROM"
+"/top_tb/TOP/i_CPU/L1CI"
+"/top_tb/TOP/i_CPU/L1CD"
+"/top_tb/TOP/i_Conv"
+"/top_tb/TOP/i_Conv/i_ConvAcc"
+SCOPE_LIST_END
+
+GETSIGNALFORM_SCOPE_HIERARCHY_END
+
+

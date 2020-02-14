@@ -1,0 +1,10 @@
+parameter  [ 6:0] OP_R_TYPE = 7'b0110011,
+                  OP_LW     = 7'b0000011,
+                  OP_SW     = 7'b0100011,
+                  OP_I_TYPE = 7'b0010011,
+                  OP_JALR   = 7'b1100111,
+                  OP_B_TYPE = 7'b1100011,
+                  OP_AUIPC  = 7'b0010111,
+                  OP_LUI    = 7'b0110111,
+                  OP_JAL    = 7'b1101111,
+                  OP_SYS    = 7'b1110011;
